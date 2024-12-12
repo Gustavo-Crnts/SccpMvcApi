@@ -8,6 +8,7 @@ namespace SccpMvcApi.Models
     public class PartidasViewModel
     {
         public int Id { get; set; }
+        public string Nome { get; set;}
         public string Dia { get; set; }
         public string Horario { get; set; }
         public string Estadio { get; set; }

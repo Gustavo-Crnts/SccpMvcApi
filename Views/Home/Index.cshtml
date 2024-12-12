@@ -1,8 +1,37 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<SccpMvcApi.Models.JogadorViewModel>
+@{ViewBag.Title = "Jogadores"; }
+<h2>Relação de Jogadores</h2>
+@Html.ActionLink("Adicionar Novo Jogador", "Create")
+</p>
+<table class="table">
+<tr>
+<th>@Html.DisplayNameFor(model => model.Id)      </th>
+<th>@Html.DisplayNameFor(model => model.Nome)     </th>
+<th>@Html.DisplayNameFor(model => model.Posicao)    </th>
+<th>@Html.DisplayNameFor(model => model.Salario)     </th>
+<th>@Html.DisplayNameFor(model => model.Partidas)      </th>
+<th>@Html.DisplayNameFor(model => model.Gols)      </th>
+<th>@Html.DisplayNameFor(model => model.Assistencias)  </th>
+<th></th>
+</tr>
+<!--Looping para escrever os dados na tabela-->
+@foreach (var item in Model)
+{
+<tr>
+<td>@Html.DisplayFor(modelItem => item.Id)        </td>
+<td>@Html.DisplayFor(modelItem => item.Nome)      </td>
+<td>@Html.DisplayFor(modelItem => item.Posicao)    </td>
+<td>@Html.DisplayFor(modelItem => item.Salario)</td>
+<td>@Html.DisplayFor(modelItem => item.Partidas ) </td>
+<td>@Html.DisplayFor(modelItem => item.Gols)  </td>
+<td>@Html.DisplayFor(modelItem => item.Assistencias)  </td>
+<td><!--Coluna para Links/botões-->
+@Html.ActionLink("Editar", "Edit", new { id = item.Id } ) |
+@Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+@Html.ActionLink("Deletar", "Delete", new { id = item.Id }
+    , new { onclick = "return confirm('Deseja realmente excluir este jogador?');"})
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+</td>
+</tr>
+}
+</table>
